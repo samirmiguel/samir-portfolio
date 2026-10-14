@@ -8,11 +8,12 @@ import type { Client } from "../types/content";
 function LogoCell({ client }: { client: Client }) {
   const content = (
     <>
-      <span className="flex h-12 w-full items-center justify-center">
+      <span className="flex h-14 max-w-full items-center justify-center rounded-control px-3 py-1 sm:h-16 dark:bg-zinc-100">
         <CompanyLogo
           name={client.name}
           src={client.logo}
-          className="h-10 max-w-full opacity-60 grayscale transition duration-300 group-hover:opacity-100 group-hover:grayscale-0 group-focus-visible:opacity-100 group-focus-visible:grayscale-0 sm:h-12 dark:opacity-80 dark:brightness-250 dark:group-hover:brightness-100 dark:group-focus-visible:brightness-100"
+          className="h-10 max-w-full sm:h-12"
+          fallbackClassName="dark:text-zinc-700"
         />
       </span>
       <span className="text-xs text-zinc-500 dark:text-zinc-400">
