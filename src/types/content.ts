@@ -23,6 +23,8 @@ export type Profile = {
   email: string;
   photo: string;
   cv: string;
+  /** QR code pointant vers le site (optionnel) */
+  qrCode?: string;
   socials: SocialLink[];
   about: string[];
   keyFigures: KeyFigure[];
@@ -82,7 +84,7 @@ export type NavItem = {
 /** Textes d'interface (titres de sections, libellés de boutons) */
 export type SiteCopy = {
   skipLink: string;
-  hero: { contact: string; downloadCv: string; basedIn: string };
+  hero: { contact: string; downloadCv: string; basedIn: string; qrCaption: string; qrAlt: string };
   sections: Record<
     "about" | "skills" | "experience" | "trustedBy" | "education" | "certifications" | "contact",
     { eyebrow: string; title: string; description?: string }

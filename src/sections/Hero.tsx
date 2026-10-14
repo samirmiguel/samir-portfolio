@@ -12,7 +12,7 @@ function ProfilePhoto() {
   const [failed, setFailed] = useState(false);
 
   return (
-    <div className="relative size-36 shrink-0 overflow-hidden rounded-3xl border border-zinc-200 bg-accent-50 shadow-card sm:size-44 lg:size-56 dark:border-zinc-800 dark:bg-accent-900/50">
+    <div className="relative size-36 shrink-0 overflow-hidden rounded-3xl border border-zinc-200 bg-accent-50 shadow-card sm:size-44 lg:size-48 dark:border-zinc-800 dark:bg-accent-900/50">
       {failed ? (
         <span
           role="img"
@@ -37,6 +37,26 @@ function ProfilePhoto() {
   );
 }
 
+function QrCode({ src }: { src: string }) {
+  return (
+    <figure className="flex shrink-0 flex-col items-center gap-2">
+      <div className="size-36 rounded-3xl border border-zinc-200 bg-white p-2.5 shadow-card sm:size-44 lg:size-48 dark:border-zinc-700">
+        <img
+          src={src}
+          alt={siteCopy.hero.qrAlt}
+          width={192}
+          height={192}
+          decoding="async"
+          className="size-full [image-rendering:pixelated]"
+        />
+      </div>
+      <figcaption className="text-center text-xs text-zinc-500 dark:text-zinc-400">
+        {siteCopy.hero.qrCaption}
+      </figcaption>
+    </figure>
+  );
+}
+
 export function Hero() {
   return (
     <section id="top" aria-labelledby="hero-title" className="pt-32 pb-20 sm:pt-40 sm:pb-24">
@@ -47,7 +67,7 @@ export function Hero() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="flex flex-col-reverse gap-10 md:flex-row md:items-center md:justify-between"
         >
-          <div className="max-w-2xl">
+          <div className="max-w-2xl min-w-0">
             <Badge variant="outline" className="mb-6">
               <MapPin className="size-3.5" aria-hidden="true" />
               {siteCopy.hero.basedIn} {profile.location}
@@ -93,7 +113,10 @@ export function Hero() {
             </div>
           </div>
 
-          <ProfilePhoto />
+          <div className="flex shrink-0 items-start gap-4">
+            <ProfilePhoto />
+            {profile.qrCode && <QrCode src={profile.qrCode} />}
+          </div>
         </m.div>
       </Container>
     </section>

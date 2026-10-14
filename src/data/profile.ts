@@ -10,6 +10,7 @@ export const profile: Profile = {
   email: "samirmiguel31@gmail.com",
   photo: "/images/profile.jpg",
   cv: "/cv/CV_Samir_Miguel.pdf",
+  qrCode: "/images/qr-code.svg",
   socials: [
     {
       label: "LinkedIn",

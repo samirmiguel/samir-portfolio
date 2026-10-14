@@ -18,6 +18,8 @@ export const siteCopy: SiteCopy = {
     contact: "Me contacter",
     downloadCv: "Télécharger mon CV",
     basedIn: "Basé à",
+    qrCaption: "Scannez pour ouvrir le site",
+    qrAlt: "QR code vers samir-miguel.netlify.app",
   },
   sections: {
     about: { eyebrow: "À propos", title: "Du code .NET aux indicateurs métier" },
