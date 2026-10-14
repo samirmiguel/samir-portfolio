@@ -27,12 +27,13 @@ export const clients: Client[] = [
   {
     name: "Centre Hospitalier Sud Francilien",
     logo: "/logos/chsf.png",
-    url: "https://www.chsf.fr",
+    url: "https://mtonstage.fr",
     relation: "employer",
   },
   {
     name: "Ange Global Business",
     logo: "/logos/agb-info.png",
+    url: "https://www.agbinfo.com",
     relation: "client",
   },
 ];
