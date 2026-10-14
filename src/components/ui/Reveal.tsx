@@ -10,8 +10,8 @@ type RevealProps = {
 };
 
 /**
- * Apparition discrète au scroll (fondu + léger déplacement), une seule fois par élément.
- * Le déplacement est désactivé si l'utilisateur préfère réduire les animations (MotionConfig).
+ * Fondu et léger déplacement à l'entrée dans le viewport (une seule fois).
+ * Respecte prefers-reduced-motion via le MotionConfig de App.
  */
 export function Reveal({ children, delay = 0, className, as = "div" }: RevealProps) {
   const Component = as === "li" ? m.li : m.div;

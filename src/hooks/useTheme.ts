@@ -19,8 +19,8 @@ function getInitialTheme(): Theme {
 }
 
 /**
- * Thème clair / sombre : suit la préférence système par défaut,
- * puis mémorise le choix explicite de l'utilisateur dans localStorage.
+ * Thème clair / sombre. Suit la préférence système tant qu'aucun choix
+ * n'est enregistré dans localStorage.
  */
 export function useTheme() {
   const [theme, setTheme] = useState<Theme>(getInitialTheme);
@@ -44,7 +44,7 @@ export function useTheme() {
       try {
         localStorage.setItem(STORAGE_KEY, next);
       } catch {
-        // Stockage indisponible (navigation privée) : le choix vaut pour la session uniquement.
+        // localStorage indisponible : le choix n'est pas persisté.
       }
       return next;
     });

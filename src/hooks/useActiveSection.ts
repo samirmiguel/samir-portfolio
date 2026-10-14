@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 /**
- * Scrollspy : renvoie l'id de la section actuellement au centre de l'écran.
+ * Scrollspy : id de la section située au centre du viewport, ou null en haut de page.
  */
 export function useActiveSection(ids: string[]): string | null {
   const [activeId, setActiveId] = useState<string | null>(null);
@@ -24,7 +24,6 @@ export function useActiveSection(ids: string[]): string | null {
 
     elements.forEach((el) => observer.observe(el));
 
-    // En haut de page (Hero), aucun lien n'est actif.
     const onScroll = () => {
       if (window.scrollY < 120) setActiveId(null);
     };

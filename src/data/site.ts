@@ -1,6 +1,6 @@
 import type { NavItem, SiteCopy } from "../types/content";
 
-/** Liens de la navbar, dans l'ordre d'affichage. `id` = ancre de la section. */
+/** Liens de la navbar ; `id` correspond à l'ancre de la section. */
 export const navItems: NavItem[] = [
   { id: "a-propos", label: "À propos" },
   { id: "competences", label: "Compétences" },
@@ -11,7 +11,7 @@ export const navItems: NavItem[] = [
   { id: "contact", label: "Contact" },
 ];
 
-/** Textes d'interface : titres de sections, libellés de boutons, textes d'accessibilité. */
+/** Textes d'interface : titres de sections, libellés et textes d'accessibilité. */
 export const siteCopy: SiteCopy = {
   skipLink: "Aller au contenu",
   hero: {

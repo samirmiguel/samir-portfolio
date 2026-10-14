@@ -1,21 +1,21 @@
 import type { Client } from "../types/content";
 
 /**
- * Entreprises affichées dans la section "Ils m'ont fait confiance".
- * La timeline des expériences réutilise ces entrées (via le champ `name`) pour afficher les logos.
+ * Entreprises de la section "Ils m'ont fait confiance".
+ * Les logos de la timeline des expériences sont résolus à partir de cette liste (champ `name`).
  *
- * Pour ajouter une entreprise :
- *   1. Déposer le logo dans public/logos/ (SVG de préférence, sinon PNG à fond transparent).
- *   2. Ajouter une entrée dans le tableau ci-dessous, par exemple :
+ * Ajout d'une entreprise :
+ *   1. Placer le logo dans public/logos/ (SVG recommandé, ou PNG à fond transparent).
+ *   2. Ajouter une entrée au tableau :
  *
  *   {
  *     name: "Nom de l'entreprise",
  *     logo: "/logos/nom-entreprise.svg",
  *     url: "https://www.exemple.com", // optionnel
- *     relation: "client", // "employer" : j'y ai travaillé / "client" : j'ai développé des outils pour elle
+ *     relation: "client", // "employer" ou "client"
  *   },
  *
- * Si le fichier du logo est absent, le nom de l'entreprise s'affiche proprement à la place.
+ * En l'absence de fichier logo, le nom de l'entreprise est affiché en texte.
  */
 export const clients: Client[] = [
   {

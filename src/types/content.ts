@@ -37,13 +37,13 @@ export type SkillCategory = {
 };
 
 export type Client = {
-  /** Nom de l'entreprise */
+  /** Nom affiché, utilisé aussi comme clé par Experience.company */
   name: string;
-  /** Chemin vers le logo, ex. "/logos/generali.png" */
+  /** Chemin public du logo, ex. "/logos/generali.png" */
   logo: string;
-  /** Site de l'entreprise (optionnel) */
+  /** Site web de l'entreprise */
   url?: string;
-  /** Entreprise où j'ai travaillé OU pour laquelle j'ai développé des outils */
+  /** "employer" : employeur ; "client" : entreprise cliente */
   relation: "employer" | "client";
 };
 
@@ -51,7 +51,7 @@ export type Experience = {
   role: string;
   contract: string;
   period: string;
-  /** Doit correspondre au champ `name` d'une entrée de clients.ts (pour afficher le logo) */
+  /** Correspond au `name` d'une entrée de clients.ts (logo de la timeline) */
   company: string;
   location: string;
   department?: string;

@@ -1,59 +1,80 @@
-# Portfolio - Samir Miguel
+# Samir Miguel - Portfolio
 
-Site personnel single page : Vite + React + TypeScript (strict), Tailwind CSS v4, lucide-react et motion.
-Déployé sur Netlify.
+Portfolio personnel de Samir Miguel, développeur C# / .NET & Data Analyst.
 
-## 1. Installation et lancement local
+Site single page construit avec Vite, React, TypeScript, Tailwind CSS v4, lucide-react et motion,
+déployé sur Netlify.
 
-Prérequis : Node.js 20.19+ ou 22.12+.
+## Fonctionnalités
+
+- Thème clair / sombre (préférence système par défaut, choix mémorisé)
+- Navigation par ancres avec mise en évidence de la section active
+- Animations d'apparition respectant `prefers-reduced-motion`
+- Contenu entièrement piloté par des fichiers de données typés
+- Responsive, accessible (WCAG AA) et optimisé pour le référencement
+
+## Prérequis
+
+- Node.js 20.19+ ou 22.12+
+- npm
+
+## Démarrage
 
 ```bash
 npm install
-npm run dev        # http://localhost:5173
+npm run dev
 ```
 
-Autres scripts :
+Le site est servi sur http://localhost:5173.
 
-| Commande               | Rôle                                       |
-| ---------------------- | ------------------------------------------ |
-| `npm run build`        | Vérification TypeScript + build dans dist/ |
-| `npm run preview`      | Sert le build de production en local       |
-| `npm run lint`         | ESLint (zéro warning toléré)               |
-| `npm run format`       | Formate le code avec Prettier              |
-| `npm run format:check` | Vérifie le formatage sans modifier         |
+## Scripts
 
-## 2. Fichiers à déposer
+| Commande               | Description                                   |
+| ---------------------- | --------------------------------------------- |
+| `npm run dev`          | Serveur de développement                      |
+| `npm run build`        | Vérification TypeScript et build dans `dist/` |
+| `npm run preview`      | Prévisualisation du build de production       |
+| `npm run lint`         | Analyse ESLint (aucun warning toléré)         |
+| `npm run format`       | Formatage Prettier                            |
+| `npm run format:check` | Vérification du formatage                     |
 
-Le site s'affiche correctement sans ces fichiers (initiales "SM" à la place de la photo, nom de
-l'entreprise à la place d'un logo manquant), mais pensez à les ajouter :
+## Structure
 
-| Fichier             | Emplacement                     | Conseils                                                        |
-| ------------------- | ------------------------------- | --------------------------------------------------------------- |
-| Photo de profil     | `public/images/profile.jpg`     | Format carré, 800x800 px minimum. Sert aussi d'image de partage |
-| CV                  | `public/cv/CV_Samir_Miguel.pdf` | Lien "Télécharger mon CV" du Hero                               |
-| Logos d'entreprises | `public/logos/`                 | SVG de préférence, sinon PNG à fond transparent                 |
+```
+public/
+├── images/profile.jpg    # photo de profil (carrée, 800x800 px minimum)
+├── logos/                # logos des entreprises
+├── cv/                   # CV téléchargeable (CV_Samir_Miguel.pdf)
+└── favicon.svg
+src/
+├── components/
+│   ├── ui/               # composants génériques (Button, Badge, Card, Section...)
+│   └── layout/           # Navbar, Footer, ThemeToggle
+├── sections/             # sections de la page
+├── data/                 # contenu du site
+├── hooks/                # useTheme, useActiveSection
+├── lib/                  # utilitaires
+└── types/                # types du contenu
+```
 
-Logos déjà présents : `generali.png`, `chsf.png`, `agb-info.png` (fonds rendus transparents).
-Pour les remplacer par des SVG, déposez le fichier puis mettez à jour le chemin dans `src/data/clients.ts`.
+## Contenu
 
-## 3. Modifier le contenu
+Le contenu est défini dans `src/data/` et typé dans `src/types/content.ts`. Les composants ne
+contiennent aucun texte propre au profil.
 
-Tout le contenu vit dans `src/data/`, typé dans `src/types/content.ts`. Les composants ne contiennent
-aucun texte lié au profil.
-
-| Fichier             | Contenu                                                     |
-| ------------------- | ----------------------------------------------------------- |
-| `profile.ts`        | Identité, accroche, à propos, chiffres clés, langues, liens |
-| `skills.ts`         | Compétences par catégorie                                   |
-| `experiences.ts`    | Expériences (timeline)                                      |
-| `clients.ts`        | Entreprises de la section "Ils m'ont fait confiance"        |
-| `education.ts`      | Formation et projets marquants                              |
-| `certifications.ts` | Certifications                                              |
-| `site.ts`           | Liens de navigation et textes d'interface (titres, boutons) |
+| Fichier             | Contenu                                                |
+| ------------------- | ------------------------------------------------------ |
+| `profile.ts`        | Identité, accroche, présentation, chiffres clés, liens |
+| `skills.ts`         | Compétences par catégorie                              |
+| `experiences.ts`    | Expériences professionnelles                           |
+| `clients.ts`        | Entreprises de la section "Ils m'ont fait confiance"   |
+| `education.ts`      | Formation et projets                                   |
+| `certifications.ts` | Certifications                                         |
+| `site.ts`           | Navigation et textes d'interface                       |
 
 ### Ajouter une entreprise
 
-1. Déposer le logo dans `public/logos/` (ex. `public/logos/acme.svg`).
+1. Placer le logo dans `public/logos/` (SVG recommandé, ou PNG à fond transparent).
 2. Ajouter une entrée dans `src/data/clients.ts` :
 
 ```ts
@@ -61,15 +82,16 @@ aucun texte lié au profil.
   name: "Acme",
   logo: "/logos/acme.svg",
   url: "https://www.acme.com", // optionnel
-  relation: "client", // "employer" : j'y ai travaillé / "client" : j'ai développé des outils pour elle
+  relation: "client", // "employer" ou "client"
 },
 ```
 
+Si le fichier du logo est introuvable, le nom de l'entreprise est affiché à la place.
+
 ### Ajouter une expérience
 
-Ajouter un objet en tête du tableau de `src/data/experiences.ts` (ordre antéchronologique).
-Le champ `company` doit être identique au `name` d'une entrée de `clients.ts` pour que le logo
-s'affiche dans la timeline :
+Ajouter une entrée en tête du tableau de `src/data/experiences.ts`. Le champ `company` doit
+correspondre au `name` d'une entrée de `clients.ts` pour afficher le logo dans la timeline.
 
 ```ts
 {
@@ -83,26 +105,25 @@ s'affiche dans la timeline :
 },
 ```
 
-## 4. Déploiement Netlify
+## Déploiement
 
-La configuration est dans `netlify.toml` (build `npm run build`, dossier `dist`, Node 22, cache long
-sur `/assets/*`).
+La configuration Netlify est définie dans `netlify.toml` (commande `npm run build`, dossier `dist`,
+Node 22, cache long sur `/assets/*`).
 
-**Option A - en ligne de commande**
+### Netlify CLI
 
 ```bash
 npx netlify-cli login
-npx netlify-cli init          # crée ou lie le site Netlify
+npx netlify-cli init
 npx netlify-cli deploy --prod
 ```
 
-**Option B - déploiement continu depuis GitHub**
+### Déploiement continu
 
-1. Pousser le dépôt sur GitHub.
-2. Sur [app.netlify.com](https://app.netlify.com) : _Add new site > Import an existing project_, choisir
-   le dépôt. Les réglages de build sont lus depuis `netlify.toml`.
-3. Chaque push sur `main` déclenche un nouveau déploiement.
+Importer le dépôt GitHub depuis [app.netlify.com](https://app.netlify.com)
+(_Add new site > Import an existing project_). Chaque push sur `main` déclenche un déploiement.
 
-> Une fois le domaine connu, remplacez dans `index.html` les chemins relatifs `og:image` et
-> `twitter:image` par une URL absolue (ex. `https://votre-site.netlify.app/images/profile.jpg`) :
-> certains réseaux sociaux l'exigent pour afficher l'aperçu.
+### Partage sur les réseaux sociaux
+
+Les balises `og:image` et `twitter:image` de `index.html` utilisent un chemin relatif. Une fois le
+domaine connu, les remplacer par une URL absolue (ex. `https://<domaine>/images/profile.jpg`).

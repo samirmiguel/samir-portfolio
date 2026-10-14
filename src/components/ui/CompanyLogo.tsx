@@ -8,14 +8,13 @@ type CompanyLogoProps = {
   className?: string;
   /** Classes du texte affiché si le logo est absent */
   fallbackClassName?: string;
-  /** Dimensions intrinsèques indicatives (évite les décalages de mise en page) */
+  /** Dimensions intrinsèques, pour limiter les décalages de mise en page */
   width?: number;
   height?: number;
 };
 
 /**
- * Logo d'entreprise avec repli : si le fichier est absent ou invalide,
- * le nom de l'entreprise est affiché en texte (jamais d'image cassée).
+ * Logo d'entreprise. Affiche le nom en texte si l'image est absente ou ne se charge pas.
  */
 export function CompanyLogo({
   name,
