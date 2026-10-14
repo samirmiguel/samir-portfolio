@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Samir Miguel - Développeur C# / .NET & Data Analyst</title>
+    <meta
+      name="description"
+      content="Portfolio de Samir Miguel, développeur C# / .NET et Data Analyst Power BI, spécialisé en intégration de données avec Apache NiFi et Kafka. Basé à Paris."
+    />
+    <meta name="author" content="Samir Miguel" />
+    <meta name="theme-color" content="#1f3864" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:title" content="Samir Miguel - Développeur C# / .NET & Data Analyst" />
+    <meta
+      property="og:description"
+      content="Applications ASP.NET Core, automatisation batch, dashboards Power BI et intégration de données avec Apache NiFi."
+    />
+    <meta property="og:image" content="/images/profile.jpg" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Samir Miguel - Développeur C# / .NET & Data Analyst" />
+    <meta
+      name="twitter:description"
+      content="Applications ASP.NET Core, automatisation batch, dashboards Power BI et intégration de données avec Apache NiFi."
+    />
+    <meta name="twitter:image" content="/images/profile.jpg" />
+
+    <script>
+      // Applique le thème avant le premier rendu pour éviter un flash.
+      (function () {
+        try {
+          var stored = localStorage.getItem("theme");
+          var dark = stored
+            ? stored === "dark"
+            : matchMedia("(prefers-color-scheme: dark)").matches;
+          document.documentElement.classList.toggle("dark", dark);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

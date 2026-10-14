@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+
+  --color-accent-50: #eef2f9;
+  --color-accent-100: #dbe3f1;
+  --color-accent-200: #b7c6e2;
+  --color-accent-300: #8ea4cf;
+  --color-accent-400: #6a86bd;
+  --color-accent-500: #3f5d99;
+  --color-accent-600: #2d4a80;
+  --color-accent-700: #1f3864;
+  --color-accent-800: #182c4f;
+  --color-accent-900: #112039;
+
+  --radius-card: 1rem;
+  --radius-control: 0.625rem;
+
+  --shadow-card: 0 1px 2px 0 rgb(0 0 0 / 0.04);
+  --shadow-card-hover: 0 8px 24px -12px rgb(15 23 42 / 0.18);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    @apply bg-white font-sans text-zinc-900 antialiased dark:bg-zinc-950 dark:text-zinc-100;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-accent-600 dark:outline-accent-300;
+  }
+
+  ::selection {
+    @apply bg-accent-100 text-accent-900 dark:bg-accent-800 dark:text-white;
+  }
+}
