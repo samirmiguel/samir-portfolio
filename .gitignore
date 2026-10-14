@@ -7,3 +7,6 @@ dist-ssr
 .vscode/*
 !.vscode/extensions.json
 *.tsbuildinfo
+
+# Notes locales
+prompt_portfolio_claude_code.md
